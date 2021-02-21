@@ -9,7 +9,7 @@ const allowedIp = process.env.allowed_host || "*";
 router.use(function (req, res, next) {
     if (allowedIp === "*") {
         console.log(
-            `Incoming ip is ${req.ip}, all IP's are allowed because there is no 'host' variable in .env`
+            `Incoming ip is ${req.ip}, all IP's are allowed because there is no 'allowed_host' variable in .env`
         );
         next();
     } else {
