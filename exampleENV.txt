@@ -1,0 +1,5 @@
+port=8080
+host=0.0.0.0
+allowed_host=0.0.0.0
+
+# Rename this file to .env
