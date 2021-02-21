@@ -1,6 +1,7 @@
 import express from "express";
 import def from "./routes/default.js";
 import errorHandler from "./middleware/errorHandler.js";
+import compression from "compression";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -9,6 +10,8 @@ const host = process.env.host || "0.0.0.0";
 
 const app = express();
 const router = express.Router();
+
+app.use(compression());
 
 app.use((req, res, next) => {
     console.log(`Incoming request`);
