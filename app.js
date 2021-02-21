@@ -1,7 +1,7 @@
 import express from "express";
 import def from "./routes/default.js";
-import dotenv from "dotenv";
 import errorHandler from "./middleware/errorHandler.js";
+import dotenv from "dotenv";
 dotenv.config();
 
 const port = process.env.port || 8080;

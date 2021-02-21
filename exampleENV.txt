@@ -1,5 +1,6 @@
 port=8080
 host=0.0.0.0
 allowed_host=0.0.0.0
+request_limit=2
 
 # Rename this file to .env
