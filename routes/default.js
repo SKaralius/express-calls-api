@@ -6,18 +6,21 @@ const router = express.Router();
 
 router.use(allowIp);
 
-router.use("/getPriceHistory/:startDate/:endDate", async (req, res) => {
+router.use("/getPriceHistory/:startDate/:endDate", async (req, res, next) => {
     const { startDate, endDate } = req.params;
-    // TODO: Error handling, what if params are not dates?
-    const response = await fetch(
-        `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`
-    );
-    // TODO: catch errors in response
-    const responseJson = await response.json();
-    for (let date in responseJson.bpi) {
-        responseJson.bpi[date] *= 1000;
+    try {
+        const response = await fetch(
+            `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${endDate}`
+        );
+        const responseJson = await response.json();
+        for (let date in responseJson.bpi) {
+            responseJson.bpi[date] *= 1000;
+        }
+        res.json(responseJson);
+    } catch (err) {
+        err.message = "Bad request or API is down";
+        next(err);
     }
-    res.json(responseJson);
 });
 
 export default router;

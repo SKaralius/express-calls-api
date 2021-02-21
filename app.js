@@ -1,6 +1,7 @@
 import express from "express";
 import def from "./routes/default.js";
 import dotenv from "dotenv";
+import errorHandler from "./middleware/errorHandler.js";
 dotenv.config();
 
 const port = process.env.port || 8080;
@@ -16,6 +17,8 @@ app.use((req, res, next) => {
 
 router.use(def);
 app.use("/api", router);
+
+app.use(errorHandler);
 
 const server = app.listen(port, host, () =>
     console.log(`Listening on host ${host} and port ${server.address().port}`)
