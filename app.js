@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const port = process.env.port || 8080;
-const host = process.env.host || "0.0.0.0";
+const host = process.env.host || "localhost";
 
 const app = express();
 const router = express.Router();
