@@ -1,0 +1,11 @@
+{
+  "name": "express-calls-api",
+  "version": "1.0.0",
+  "description": "Express app calls an API and returns modified JSON data.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simonas Karalius",
+  "license": "ISC"
+}
